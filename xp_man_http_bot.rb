@@ -55,7 +55,6 @@ class XPManHTTPBot < Sinatra::Base
   def last_three_dynamite_moves_countered_with_waterbomb?
     if dynamite_played_by_myself_at_least_three_times?
       last_three_dynamite_move_indexes = get_last_three_dynamite_move_indexes
-      opponent_dynamite_counters = last_three_dynamite_move_indexes.map {|index| session[:opponent_move_history][index]}
       last_three_dynamite_move_indexes.all? {|index| opponent_played_waterbomb_on_move?(index)}
     else
       false
